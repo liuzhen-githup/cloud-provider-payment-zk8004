@@ -1,0 +1,19 @@
+server:
+  port: ${server.eureka2.port}
+
+eureka:
+  instance:
+    hostname: ${server.eureka2.name} #eureka服务端的实例名称
+  client:
+    #false 表示不向注册中心注册自己
+    register-with-eureka: false
+    # false表示自己端就是注册中心，职责时维护服务实例，并不需要检索服务
+    fetch-registry: false
+    #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址
+    service-url:
+      #集群相互注册
+      defaultZone: http://${server.eureka1.name}:${server.eureka1.port}/eureka
+  server:
+    #关闭自我保护机制，保证不可用服务及时删除
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000

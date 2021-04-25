@@ -1,0 +1,4 @@
+/Users/sence/workspace/sc-workspace/cloud-study/cloud-consumer-feign-hystrix-order80/src/main/java/com/study/hystrix/service/PaymentHystrixService.java
+/Users/sence/workspace/sc-workspace/cloud-study/cloud-consumer-feign-hystrix-order80/src/main/java/com/study/hystrix/service/impl/PaymentFallBackServer.java
+/Users/sence/workspace/sc-workspace/cloud-study/cloud-consumer-feign-hystrix-order80/src/main/java/com/study/hystrix/OrderHystrixApplication80.java
+/Users/sence/workspace/sc-workspace/cloud-study/cloud-consumer-feign-hystrix-order80/src/main/java/com/study/hystrix/controller/OderHystrixController.java

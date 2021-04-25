@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.cloud.dao.PaymentDao">
+
+    <resultMap type="con.study.common.domain.Payment" id="PaymentInfo">
+        <id property="id" column="ID" jdbcType="BIGINT"/>
+        <id property="serial" column="SERIAL" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getPaymentById"  resultMap="PaymentInfo" parameterType="java.lang.Long">
+        SELECT ID,SERIAL FROM PAYMENT WHERE ID= #{id};
+    </select>
+
+    <insert id="savePayment" parameterType="con.study.common.domain.Payment" useGeneratedKeys="true" keyProperty="id">
+        insert into PAYMENT (SERIAL) values (#{serial});
+    </insert>
+
+</mapper>
