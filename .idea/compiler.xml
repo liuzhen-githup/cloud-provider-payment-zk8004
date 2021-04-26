@@ -19,6 +19,7 @@
         <module name="cloud-consumer-hystrix-dashboard9001" />
         <module name="cloud-gateway-server9527" />
         <module name="cloud-consumer-order-openfeign80" />
+        <module name="cloud-public-config" />
         <module name="cloud-consumer-order80" />
       </profile>
     </annotationProcessing>
@@ -36,6 +37,7 @@
       <module name="cloud-provider-payment-zk8004" target="8" />
       <module name="cloud-provider-payment8001" target="8" />
       <module name="cloud-provider-payment8002" target="8" />
+      <module name="cloud-public-config" target="8" />
       <module name="cloud-study" target="1.8" />
     </bytecodeTargetLevel>
   </component>
