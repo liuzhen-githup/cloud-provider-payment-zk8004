@@ -4,6 +4,8 @@
 package com.study.cloud.controller;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.study.cloud.service.PaymentService;
 import con.study.common.domain.CommonResult;
 import con.study.common.domain.Payment;
@@ -58,11 +60,22 @@ public class PaymentController {
         Payment result = paymentService.doFindPaymentById(id);
 
         log.info("*******查询结果：" + result);
+        CommonResult commonResult = null;
         if(result != null){
-            return  new CommonResult(200,"查询成功,serverPort :"+serverPort,result);
+            commonResult = new CommonResult(200,"查询成功,serverPort :"+serverPort,result);
         } else {
-            return  new CommonResult(444,"查询失败,serverPort :"+serverPort,null);
+            commonResult = new CommonResult(444,"查询失败,serverPort :"+serverPort,null);
         }
+        log.info("************** commonResult: "+commonResult);
+        //2、创建jackson的核心对象 ObjectMapper
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json =  mapper.writeValueAsString(commonResult);
+            System.out.println("********* json: "+ json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return commonResult;
     }
 
     @GetMapping(value = "/payment/discovery")

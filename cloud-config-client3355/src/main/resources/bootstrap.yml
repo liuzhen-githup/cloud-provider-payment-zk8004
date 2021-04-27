@@ -1,0 +1,40 @@
+server:
+  port: 3355
+
+
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    #config 客户端配置
+    config:
+      label: master #分支名称
+      name: application #配置文件名称
+      profile: dev #读取后缀名称 label/name-profile 三个属性会整合 结果为 master/application-dev.yml
+      uri: http://localhost:3344
+
+
+
+#入驻注册中心配置信息
+eureka:
+  client:
+    #表示将服务注册到eureka
+    register-with-eureka: true
+    #是否从eurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡
+    fetch-registry: true
+    service-url:
+      #集群注册
+      defaultZone: http://${server.eureka1.name}:${server.eureka1.port}/eureka,http://${server.eureka2.name}:${server.eureka2.port}/eureka
+  instance:
+    #在eureka展示的地址服务信息
+    instance-id: config3355
+    #光标移动访问路径显示IP
+    prefer-ip-address: true
+
+
+#暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
